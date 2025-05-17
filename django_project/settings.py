@@ -38,16 +38,29 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #3rd-party apps
-    'rest_framework',  # Django REST framework
+    # 'rest_framework',  # Django REST framework
+    # 'drf_spectacular',  # For API documentation
+    "rest_framework",
+    "corsheaders",
+    "drf_spectacular", # new
+
     #LOCAL APPS 
     'accounts.apps.AccountsConfig',  # Custom user app
     'posts.apps.PostsConfig',  # Posts app
-]
+    ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',  # Allow any user to access the API,confuguracion de reste framework para que quede abierto 
-    ],                                          #como servicio.
+    ],       
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", # new#como servicio.
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API Project",
+    "DESCRIPTION": "A sample blog to learn about DRF",
+    "VERSION": "1.0.0",
+    # OTHER SETTINGS
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'  # Specify the custom user model
