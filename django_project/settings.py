@@ -37,22 +37,39 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    #3rd-party apps
+    'rest_framework',  # Django REST framework
+    #LOCAL APPS 
     'accounts.apps.AccountsConfig',  # Custom user app
     'posts.apps.PostsConfig',  # Posts app
 ]
+
+RESST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Allow any user to access the API,confuguracion de reste framework para que quede abierto 
+    ],                                          #como servicio.
+}
 
 AUTH_USER_MODEL = 'accounts.CustomUser'  # Specify the custom user model
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # CORS middleware new
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# new
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"] # new
 
 ROOT_URLCONF = 'django_project.urls'
 
