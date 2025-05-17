@@ -51,7 +51,8 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',  # Allow any user to access the API,confuguracion de reste framework para que quede abierto 
+        #'rest_framework.permissions.IsAuthenticated',  # Allow any user to access the API,confuguracion de reste framework para que quede abierto 
+        'rest_framework.permissions.AllowAny',  # Allow any user to access the API
     ],       
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", # new#como servicio.
 }
@@ -78,11 +79,11 @@ MIDDLEWARE = [
 
 # new
 CORS_ORIGIN_WHITELIST = (
-    "http://localhost:3000",
+    "http://localhost:4200",
     "http://localhost:8000",
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"] # new
+CSRF_TRUSTED_ORIGINS = ["http://localhost:4200"] # new
 
 ROOT_URLCONF = 'django_project.urls'
 
