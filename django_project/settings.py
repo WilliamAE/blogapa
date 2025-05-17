@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',  # Posts app
 ]
 
-RESST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Allow any user to access the API,confuguracion de reste framework para que quede abierto 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # Allow any user to access the API,confuguracion de reste framework para que quede abierto 
     ],                                          #como servicio.
 }
 
